@@ -1,0 +1,36 @@
+{
+  "name": "clai",
+  "version": "1.0.0",
+  "description": "A CLI tool to process text to command",
+  "type": "module",
+  "main": "bin/index.js",
+  "bin": {
+    "clai": "./bin/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MysticFragilist/ClAi.git"
+  },
+  "keywords": [
+    "AI",
+    "GPT-3",
+    "CLI",
+    "tool"
+  ],
+  "author": "Samuel Montambault <samuel.montambault.1@ens.etsmtl.ca>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MysticFragilist/ClAi/issues"
+  },
+  "homepage": "https://github.com/MysticFragilist/ClAi#readme",
+  "dependencies": {
+    "boxen": "^7.0.1",
+    "chalk": "^5.2.0",
+    "child_process": "^1.0.2",
+    "openai": "^3.1.0",
+    "yargs": "^17.6.2"
+  }
+}

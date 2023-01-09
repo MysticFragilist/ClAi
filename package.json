@@ -1,6 +1,6 @@
 {
   "name": "@mysticfragilist/clai",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "A CLI tool to process text to command",
   "type": "module",
   "main": "bin/index.js",

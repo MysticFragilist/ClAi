@@ -14,7 +14,6 @@ async function translateTextToCommand(shell, text) {
     prompt: promptText,
   });
   var answer = completion.data.choices[0].text.replaceAll('\r', '').replaceAll('\n', '').trim()
-  console.log(completion.data.choices)
   return answer
 }
 

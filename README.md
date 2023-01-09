@@ -3,8 +3,6 @@
 </p>
 
 [![Downloads](https://img.shields.io/npm/dt/@mysticfragilist/clai)](https://img.shields.io/npm/dt/@mysticfragilist/clai)
-[![Downloads](https://img.shields.io/npm/dt/@mysticfragilist/clai)](https://img.shields.io/npm/dt/@mysticfragilist/clai)
-
 
 
 # ClAi :rocket:

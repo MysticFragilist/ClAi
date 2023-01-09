@@ -2,6 +2,11 @@
   <img src="https://github.com/MysticFragilist/ClAi/blob/master/logo.png" width="200" height="200" align="middle" />
 </p>
 
+[![Downloads](https://img.shields.io/npm/dt/@mysticfragilist/clai)](https://img.shields.io/npm/dt/@mysticfragilist/clai)
+[![Downloads](https://img.shields.io/npm/dt/@mysticfragilist/clai)](https://img.shields.io/npm/dt/@mysticfragilist/clai)
+
+
+
 # ClAi :rocket:
 A CLI tool to process input command into shell script and execute it. Every prompt is translated to a command using GPT-3 and executed. 
 

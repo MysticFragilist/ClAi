@@ -1,11 +1,19 @@
 import fs from 'fs'
+import os from 'os'
+
+const path = os.homedir() + '\\.clairc'
 
 function getConfig () {
-  return JSON.parse(fs.readFileSync('./keys.json'))
+  if (!fs.existsSync(path)) {
+    fs.closeSync(fs.openSync(path, 'w'))
+    fs.writeFileSync(path, JSON.stringify({ apiKey: '', orgId: '' }))
+  }
+  return JSON.parse(fs.readFileSync(path))
 }
 
 function setConfig (apiKey, orgId) {
-  fs.writeFileSync('./keys.json', JSON.stringify({ apiKey, orgId }))
+  fs.closeSync(fs.openSync(path, 'w'))
+  fs.writeFileSync(path, JSON.stringify({ apiKey, orgId }))
 }
 
 export default {

@@ -14,6 +14,9 @@ Run these commands to get started:
 npm install -g @mysticfragilist/clai
 ```
 You then need to configure ClAi using your OpenAI API Key. To do so create an account on OpenAI API website and [create a new secret key](https://beta.openai.com/account/api-keys). Then copy your organization ID from [this page](https://beta.openai.com/account/org-settings).
+```bash
+clai -c
+```
 
 ## Usage
 To use ClAi simply call it as such:

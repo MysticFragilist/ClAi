@@ -41,7 +41,7 @@ if (options.p) {
 
   gpt3.translateTextToCommand(shellName, options.p).then(res => {
     console.log(`$ ${res}`)
-    childProcess.exec(res, { encoding: 'utf-8' }, (_, stdout, stderr) => {
+    childProcess.exec(`${shell.getLaunchCommandForShell(shellName)} "${res}"`, { encoding: 'utf-8' }, (_, stdout, stderr) => {
       if (stdout) {
         console.log(stdout)
       }
@@ -50,6 +50,6 @@ if (options.p) {
       }
     })
   }).catch(err => {
-    console.error(err)
+    console.error(err.request.res.statusMessage)
   })
 }

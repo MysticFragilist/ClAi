@@ -31,7 +31,7 @@ It will parse the prompt into a command and execute it.
 - [x] Parse prompt throught cli and send it to your OpenAI account.
 - [x] Support multiple shell format (cmd, bash, fish, zsh, powershell)
 - [x] Allow omitting shell argument and default to current shell.
-- [ ] Allow using bash script instead of child_process to process call (allow for loop and other interesting command for example).
+- [x] Allow using bash script instead of child_process to process call (allow for loop and other interesting command for example).
 - [ ] Add testing solution for unit and e2e to make sure everything is right on track.
 - [ ] Make a shell (or a zsh plugin) to support handling wrongly entered command.
 - [ ] Keep an history of commands to allow caching certain commands to reexecute the same way.

@@ -16,6 +16,21 @@ function getShellName () {
   return shell
 }
 
+function getLaunchCommandForShell (shellName) {
+  let launchCommand = ''
+  if (shellName === 'bash') {
+    launchCommand = 'bash -c'
+  } else if (shellName === 'powershell') {
+    launchCommand = 'powershell -Command'
+  } else if (shellName === 'cmd') {
+    launchCommand = 'cmd /c'
+  } else if (shellName === 'zsh') {
+    launchCommand = 'zsh -c'
+  }
+  return launchCommand
+}
+
 export default {
-  getShellName
+  getShellName,
+  getLaunchCommandForShell
 }

@@ -13,7 +13,8 @@ async function translateTextToCommand (shell, text) {
 
   const completion = await openai.createCompletion({
     model: 'text-davinci-003',
-    prompt: promptText
+    prompt: promptText,
+    max_tokens: 50
   })
   const answer = completion.data.choices[0].text.replaceAll('\r', '').replaceAll('\n', '').trim()
   return answer

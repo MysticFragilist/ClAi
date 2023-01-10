@@ -22,6 +22,7 @@ clai -c
 To use ClAi simply call it as such:
 ```bash
 clai -s bash -p "navigate to My Documents and list all files starting with 'a'"
+clai -p "create ten files named 1.txt to 10.txt"
 ```
 
 It will parse the prompt into a command and execute it.
@@ -29,7 +30,7 @@ It will parse the prompt into a command and execute it.
 ## Roadmap
 - [x] Parse prompt throught cli and send it to your OpenAI account.
 - [x] Support multiple shell format (cmd, bash, fish, zsh, powershell)
-- [ ] Allow omitting shell argument and default to current shell.
+- [x] Allow omitting shell argument and default to current shell.
 - [ ] Add testing solution for unit and e2e to make sure everything is right on track.
 - [ ] Make a shell (or a zsh plugin) to support handling wrongly entered command.
 - [ ] Keep an history of commands to allow caching certain commands to reexecute the same way.

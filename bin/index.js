@@ -3,6 +3,7 @@ import yargs from 'yargs/yargs'
 import childProcess from 'child_process'
 import gpt3 from './GPT3.js'
 import config from './config.js'
+import shell from './shell.js'
 import readline from 'readline'
 
 const usage = '\nUsage: clai -s <shell> -p <prompt> \n' +
@@ -32,9 +33,13 @@ if (options.c) {
     })
   })
 }
+if (options.p) {
+  let shellName = shell.getShellName()
+  if (options.s) {
+    shellName = options.s
+  }
 
-if (options.s && options.p) {
-  gpt3.translateTextToCommand(options.s, options.p).then(res => {
+  gpt3.translateTextToCommand(shellName, options.p).then(res => {
     console.log(`$ ${res}`)
     childProcess.exec(res, { encoding: 'utf-8' }, (_, stdout, stderr) => {
       if (stdout) {

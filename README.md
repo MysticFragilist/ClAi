@@ -40,6 +40,7 @@ It will parse the prompt into a command and execute it.
 - [x] Allow omitting shell argument and default to current shell.
 - [x] Allow using bash script instead of child_process to process call (allow for loop and other interesting command for example).
 - [ ] Allow user to choose which solution if multiple commands can be use.
+- [ ] Optimize for usage with git. (fine tune)
 - [ ] Keep an history of commands to allow caching certain commands to reexecute the same way.
 - [ ] Add testing solution for unit and e2e to make sure everything is right on track.
 - [ ] Make a shell (or a zsh plugin) to support handling wrongly entered command.

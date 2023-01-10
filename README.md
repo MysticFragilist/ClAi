@@ -27,6 +27,13 @@ clai -s bash -p "navigate to My Documents and list all files starting with 'a'"
 
 It will parse the prompt into a command and execute it.
 
+## Examples
+<p align="center">
+  <img src="https://github.com/MysticFragilist/ClAi/blob/master/examples/git-example.png" width="200" height="200" />
+  <img src="https://github.com/MysticFragilist/ClAi/blob/master/examples/ls-example.png" width="200" height="200" />
+  <img src="https://github.com/MysticFragilist/ClAi/blob/master/examples/networking-example.png" width="200" height="200" />
+</p>
+
 ## Roadmap
 - [x] Parse prompt throught cli and send it to your OpenAI account.
 - [x] Support multiple shell format (cmd, bash, fish, zsh, powershell)

@@ -31,7 +31,7 @@ It will parse the prompt into a command and execute it.
 <p align="center">
   <img src="https://github.com/MysticFragilist/ClAi/blob/master/examples/git-example.png" width="200" height="200" />
   <img src="https://github.com/MysticFragilist/ClAi/blob/master/examples/ls-example.png" width="200" height="200" />
-  <img src="https://github.com/MysticFragilist/ClAi/blob/master/examples/networking-example.png" width="200" height="200" />
+  <img src="https://github.com/MysticFragilist/ClAi/blob/master/examples/simple-networking-example.png" width="200" height="200" />
 </p>
 
 ## Roadmap

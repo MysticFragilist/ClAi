@@ -29,9 +29,9 @@ It will parse the prompt into a command and execute it.
 
 ## Examples
 <p align="center">
-  <img src="https://github.com/MysticFragilist/ClAi/blob/master/examples/git-example.png" width="200" />
-  <img src="https://github.com/MysticFragilist/ClAi/blob/master/examples/ls-example.png" width="200" />
-  <img src="https://github.com/MysticFragilist/ClAi/blob/master/examples/simple-networking-example.png" width="200" />
+  <img src="https://github.com/MysticFragilist/ClAi/blob/master/examples/git-example.png" width="300" />
+  <img src="https://github.com/MysticFragilist/ClAi/blob/master/examples/ls-example.png" width="300" />
+  <img src="https://github.com/MysticFragilist/ClAi/blob/master/examples/simple-networking-example.png" width="300" />
 </p>
 
 ## Roadmap

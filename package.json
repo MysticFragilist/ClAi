@@ -27,6 +27,8 @@
   },
   "homepage": "https://github.com/MysticFragilist/ClAi#readme",
   "dependencies": {
+    "boxen": "^7.0.1",
+    "chalk": "^5.2.0",
     "child_process": "^1.0.2",
     "openai": "^3.1.0",
     "yargs": "^17.6.2"

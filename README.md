@@ -21,8 +21,8 @@ clai -c
 ## Usage
 To use ClAi simply call it as such:
 ```bash
-clai -s bash -p "navigate to My Documents and list all files starting with 'a'"
 clai -p "create ten files named 1.txt to 10.txt"
+clai -s bash -p "navigate to My Documents and list all files starting with 'a'"
 ```
 
 It will parse the prompt into a command and execute it.
@@ -32,10 +32,10 @@ It will parse the prompt into a command and execute it.
 - [x] Support multiple shell format (cmd, bash, fish, zsh, powershell)
 - [x] Allow omitting shell argument and default to current shell.
 - [x] Allow using bash script instead of child_process to process call (allow for loop and other interesting command for example).
+- [ ] Allow user to choose which solution if multiple commands can be use.
+- [ ] Keep an history of commands to allow caching certain commands to reexecute the same way.
 - [ ] Add testing solution for unit and e2e to make sure everything is right on track.
 - [ ] Make a shell (or a zsh plugin) to support handling wrongly entered command.
-- [ ] Keep an history of commands to allow caching certain commands to reexecute the same way.
-- [ ] Allow user to choose which solution if multiple commands can be use.
 
 ## Distribution
 

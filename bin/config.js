@@ -1,19 +1,21 @@
 import fs from 'fs'
 import os from 'os'
+import path from 'path'
 
-const path = os.homedir() + '\\.clairc'
+const pathConfig = path.join(os.homedir(), '.clairc')
 
 function getConfig () {
-  if (!fs.existsSync(path)) {
-    fs.closeSync(fs.openSync(path, 'w'))
-    fs.writeFileSync(path, JSON.stringify({ apiKey: '', orgId: '' }))
+  if (!fs.existsSync(pathConfig)) {
+    // Init empty
+    fs.closeSync(fs.openSync(pathConfig, 'w'))
+    fs.writeFileSync(pathConfig, JSON.stringify({ apiKey: '', orgId: '' }))
   }
-  return JSON.parse(fs.readFileSync(path))
+  return JSON.parse(fs.readFileSync(pathConfig))
 }
 
 function setConfig (apiKey, orgId) {
-  fs.closeSync(fs.openSync(path, 'w'))
-  fs.writeFileSync(path, JSON.stringify({ apiKey, orgId }))
+  fs.closeSync(fs.openSync(pathConfig, 'w'))
+  fs.writeFileSync(pathConfig, JSON.stringify({ apiKey, orgId }))
 }
 
 export default {

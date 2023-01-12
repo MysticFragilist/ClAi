@@ -7,8 +7,8 @@ import childProcess from 'child_process'
 import readline from 'readline'
 
 import gpt3 from './GPT3.js'
-import config from './config.js'
 import shell from './shell.js'
+import config from './config.js'
 
 const logo = chalk.red(
   '│  ___  __      __    ____ \n' +
@@ -44,8 +44,6 @@ if (options.c) {
     })
   })
 }
-console.log(options)
-
 if (options._) {
   let shellName = shell.getShellName()
   if (options.s) {
@@ -67,5 +65,8 @@ if (options._) {
     })
   }).catch(err => {
     console.error(err.request.res.statusMessage)
+    if (err.request.res.statusCode === 401) {
+      console.error('Try doing `clairc config` to set your API key and organization ID.')
+    }
   })
 }

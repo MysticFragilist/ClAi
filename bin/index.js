@@ -27,7 +27,7 @@ const options = yargs(process.argv.slice(2))
   .alias('s', 'shell')
   .describe('s', 'Choose a default shell to execute the command against (it needs to exist in the system)')
   .choices('s', ['bash', 'powershell', 'cmd', 'zsh'])
-  .option('p', { alias: 'prompt', describe: 'Prompt to translate the command for', type: 'string', demandOption: true })
+  .option('p', { alias: 'prompt', describe: 'Prompt to translate the command for', type: 'string' })
   .help(true)
   .argv
 

@@ -24,10 +24,10 @@ const options = yargs(process.argv.slice(2))
   .usage(usage)
   .alias('c', 'config')
   .describe('c', 'Configure your API key and organization ID for OpenAI')
+  .positional('p', { alias: 'prompt', describe: 'Text prompt to translate the command', type: 'string' })
   .alias('s', 'shell')
   .describe('s', 'Choose a default shell to execute the command against (it needs to exist in the system)')
   .choices('s', ['bash', 'powershell', 'cmd', 'zsh'])
-  .option('p', { alias: 'prompt', describe: 'Prompt to translate the command for', type: 'string' })
   .help(true)
   .argv
 
@@ -44,13 +44,15 @@ if (options.c) {
     })
   })
 }
-if (options.p) {
+console.log(options)
+
+if (options._) {
   let shellName = shell.getShellName()
   if (options.s) {
     shellName = options.s
   }
 
-  gpt3.translateTextToCommand(shellName, options.p).then(res => {
+  gpt3.translateTextToCommand(shellName, options._).then(res => {
     console.log(`$ ${res}`)
     const command = childProcess.spawn('bash', [shell.getLaunchCommandForShell(shellName), res])
 

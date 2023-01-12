@@ -18,14 +18,14 @@ function getShellName () {
 
 function getLaunchCommandForShell (shellName) {
   let launchCommand = ''
-  if (shellName === 'bash') {
-    launchCommand = 'bash -c'
+  if (shellName === 'bash' || shellName === 'sh' || shellName === 'zsh') {
+    launchCommand = '-c'
   } else if (shellName === 'powershell') {
-    launchCommand = 'powershell -Command'
+    launchCommand = '-Command'
   } else if (shellName === 'cmd') {
-    launchCommand = 'cmd /c'
-  } else if (shellName === 'zsh') {
-    launchCommand = 'zsh -c'
+    launchCommand = '/c'
+  } else {
+    launchCommand = '-c'
   }
   return launchCommand
 }

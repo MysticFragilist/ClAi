@@ -52,13 +52,16 @@ if (options.p) {
 
   gpt3.translateTextToCommand(shellName, options.p).then(res => {
     console.log(`$ ${res}`)
-    childProcess.exec(`${shell.getLaunchCommandForShell(shellName)} "${res}"`, { encoding: 'utf-8' }, (_, stdout, stderr) => {
-      if (stdout) {
-        console.log(stdout)
-      }
-      if (stderr) {
-        console.error(stderr)
-      }
+    const command = childProcess.spawn('bash', [shell.getLaunchCommandForShell(shellName), res])
+
+    process.stdin.pipe(command.stdin)
+
+    command.stdout.on('data', (data) => {
+      process.stdout.write(data.toString())
+    })
+
+    command.stderr.on('data', (data) => {
+      process.stderr.write(data.toString())
     })
   }).catch(err => {
     console.error(err.request.res.statusMessage)

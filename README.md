@@ -39,7 +39,7 @@ It will parse the prompt into a command and execute it.
 - [x] Support multiple shell format (cmd, bash, fish, zsh, powershell)
 - [x] Allow omitting shell argument and default to current shell.
 - [x] Allow using bash script instead of child_process to process call (allow for loop and other interesting command for example).
-- [ ] Continuously redirect output and input to and from the process.
+- [x] Continuously redirect output and input to and from the process.
 - [ ] Allow user to choose which solution if multiple commands can be use.
 - [ ] Optimize for usage with git. (fine tune)
 - [ ] Keep an history of commands to allow caching certain commands to reexecute the same way.
@@ -53,3 +53,4 @@ The image used as a logo was generated through Dalle-2. This project is licenced
 ## Contribution
 
 To contribute, you can create an issue on this repository or making a pull request you can follow these guidelines.
+

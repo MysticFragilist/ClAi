@@ -44,15 +44,15 @@ if (options.c) {
     })
   })
 }
-if (options._) {
+if (options._.length > 0) {
   let shellName = shell.getShellName()
   if (options.s) {
     shellName = options.s
   }
 
-  gpt3.translateTextToCommand(shellName, options._).then(res => {
+  gpt3.translateTextToCommand(shellName, options._[0]).then(res => {
     console.log(`$ ${res}`)
-    const command = childProcess.spawn('bash', [shell.getLaunchCommandForShell(shellName), res])
+    const command = childProcess.spawn(shellName, [shell.getLaunchCommandForShell(shellName), res])
 
     process.stdin.pipe(command.stdin)
 

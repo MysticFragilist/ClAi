@@ -21,8 +21,8 @@ clai -c
 ## Usage
 To use ClAi simply call it as such:
 ```bash
-clai -p "create ten files named 1.txt to 10.txt"
-clai -s bash -p "navigate to My Documents and list all files starting with 'a'"
+clai "create ten files named 1.txt to 10.txt"
+clai "navigate to My Documents and list all files starting with 'a'" -s bash
 ```
 
 It will parse the prompt into a command and execute it.

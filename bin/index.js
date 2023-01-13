@@ -7,8 +7,8 @@ import childProcess from 'child_process'
 import readline from 'readline'
 
 import gpt3 from './GPT3.js'
-import config from './config.js'
 import shell from './shell.js'
+import config from './config.js'
 
 const logo = chalk.red(
   '│  ___  __      __    ____ \n' +
@@ -24,10 +24,10 @@ const options = yargs(process.argv.slice(2))
   .usage(usage)
   .alias('c', 'config')
   .describe('c', 'Configure your API key and organization ID for OpenAI')
+  .positional('p', { alias: 'prompt', describe: 'Text prompt to translate the command', type: 'string' })
   .alias('s', 'shell')
   .describe('s', 'Choose a default shell to execute the command against (it needs to exist in the system)')
   .choices('s', ['bash', 'powershell', 'cmd', 'zsh'])
-  .option('p', { alias: 'prompt', describe: 'Prompt to translate the command for', type: 'string', demandOption: true })
   .help(true)
   .argv
 
@@ -44,23 +44,29 @@ if (options.c) {
     })
   })
 }
-if (options.p) {
+if (options._.length > 0) {
   let shellName = shell.getShellName()
   if (options.s) {
     shellName = options.s
   }
 
-  gpt3.translateTextToCommand(shellName, options.p).then(res => {
+  gpt3.translateTextToCommand(shellName, options._[0]).then(res => {
     console.log(`$ ${res}`)
-    childProcess.exec(`${shell.getLaunchCommandForShell(shellName)} "${res}"`, { encoding: 'utf-8' }, (_, stdout, stderr) => {
-      if (stdout) {
-        console.log(stdout)
-      }
-      if (stderr) {
-        console.error(stderr)
-      }
+    const command = childProcess.spawn(shellName, [shell.getLaunchCommandForShell(shellName), res])
+
+    process.stdin.pipe(command.stdin)
+
+    command.stdout.on('data', (data) => {
+      process.stdout.write(data.toString())
+    })
+
+    command.stderr.on('data', (data) => {
+      process.stderr.write(data.toString())
     })
   }).catch(err => {
     console.error(err.request.res.statusMessage)
+    if (err.request.res.statusCode === 401) {
+      console.error('Try doing `clairc config` to set your API key and organization ID.')
+    }
   })
 }

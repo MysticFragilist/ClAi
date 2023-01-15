@@ -28,6 +28,14 @@ clai "check my public ip" -f
 
 It will parse the prompt into a command and execute it.
 
+| arguments  | description  |
+|---|---|
+| `-c` or `--config`  | Configure your API key and organization ID for OpenAI.  |
+| `<PROMPT>` | Text prompt to translate the command. |
+| `-s` or `--shell` | Choose a shell to execute the command against (it needs to exist in the system). If none, is provided default to the current one.  |
+| `-f` or `--force`  | Force to parse the text using OpenAI (bypass cache)  |
+
+
 ## Examples
 <p align="center">
   <img src="https://github.com/MysticFragilist/ClAi/blob/master/examples/git-example.png" width="300" />

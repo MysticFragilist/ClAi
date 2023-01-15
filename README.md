@@ -23,6 +23,7 @@ To use ClAi simply call it as such:
 ```bash
 clai "create ten files named 1.txt to 10.txt"
 clai "navigate to My Documents and list all files starting with 'a'" -s bash
+clai "check my public ip" -f
 ```
 
 It will parse the prompt into a command and execute it.

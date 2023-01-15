@@ -34,6 +34,7 @@ It will parse the prompt into a command and execute it.
 | `<PROMPT>` | Text prompt to translate the command. |
 | `-s` or `--shell` | Choose a shell to execute the command against (it needs to exist in the system). If none, is provided default to the current one.  |
 | `-f` or `--force`  | Force to parse the text using OpenAI (bypass cache)  |
+| `-h` or `--help`  | To see the usage guide of ClAi.  |
 
 
 ## Examples

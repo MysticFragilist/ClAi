@@ -2,6 +2,7 @@
 import yargs from 'yargs/yargs'
 import chalk from 'chalk'
 import boxen from 'boxen'
+import prompts from 'prompts'
 
 import childProcess from 'child_process'
 import readline from 'readline'
@@ -44,15 +45,23 @@ if (options.c) {
     })
   })
 }
-if (options._.length > 0) {
+
+async function parseCommand (options) {
   let shellName = shell.getShellName()
   if (options.s) {
     shellName = options.s
   }
+  try {
+    const res = await gpt3.translateTextToCommand(shellName, options._[0], 2)
+    let commandChosen = res[0]
 
-  gpt3.translateTextToCommand(shellName, options._[0]).then(res => {
-    console.log(`$ ${res}`)
-    const command = childProcess.spawn(shellName, [shell.getLaunchCommandForShell(shellName), res])
+    if (res.length > 1) {
+      const prompt = await prompts({ type: 'select', name: 'value', message: 'Choose a command: ', choices: res })
+      commandChosen = res[prompt.value]
+    }
+
+    console.log(`$ ${commandChosen}`)
+    const command = childProcess.spawn(shellName, [shell.getLaunchCommandForShell(shellName), commandChosen])
 
     process.stdin.pipe(command.stdin)
 
@@ -63,10 +72,14 @@ if (options._.length > 0) {
     command.stderr.on('data', (data) => {
       process.stderr.write(data.toString())
     })
-  }).catch(err => {
-    console.error(err.request.res.statusMessage)
-    if (err.request.res.statusCode === 401) {
+  } catch (e) {
+    console.error(e.request.res.statusMessage)
+    if (e.request.res.statusCode === 401) {
       console.error('Try doing `clairc config` to set your API key and organization ID.')
     }
-  })
+  }
+}
+
+if (options._.length > 0) {
+  parseCommand(options)
 }

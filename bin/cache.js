@@ -8,14 +8,18 @@ const version = '1.0'
 const pathConfigDir = path.join(os.homedir(), '.clairc')
 const pathCache = path.join(pathConfigDir, 'cache.json')
 
-function getCaches () {
+function tryInit () {
   if (!fs.existsSync(pathCache)) {
     fs.mkdirSync(pathConfigDir, { recursive: true })
     fs.closeSync(fs.openSync(pathCache, 'w'))
     fs.writeFileSync(pathCache, JSON.stringify({ version, caches: [] }))
   }
+}
 
+function getCaches () {
   try {
+    tryInit()
+
     return JSON.parse(fs.readFileSync(pathCache)).caches
   } catch (e) {
     console.error('Error reading caches file. Try removing the folder HOME/.clairc/')
@@ -25,6 +29,14 @@ function getCaches () {
 
 function addCacheEntry (prompt, command) {
   try {
+    tryInit()
+
+    if (!fs.existsSync(pathCache)) {
+      fs.mkdirSync(pathConfigDir, { recursive: true })
+      fs.closeSync(fs.openSync(pathCache, 'w'))
+      fs.writeFileSync(pathCache, JSON.stringify({ version, caches: [] }))
+    }
+
     const cacheFile = JSON.parse(fs.readFileSync(pathCache))
     // clear caches on version mismatch
     if (cacheFile.version !== version) {
@@ -50,10 +62,12 @@ function addCacheEntry (prompt, command) {
 
 function searchCache (prompt) {
   try {
+    tryInit()
+
     const cacheFile = JSON.parse(fs.readFileSync(pathCache))
     const cache = cacheFile.caches.find(c => c.prompt === prompt)
     if (cache) {
-      return cache.command
+      return [cache.command]
     }
     return null
   } catch (e) {

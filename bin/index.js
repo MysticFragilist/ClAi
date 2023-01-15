@@ -10,6 +10,7 @@ import readline from 'readline'
 import gpt3 from './GPT3.js'
 import shell from './shell.js'
 import config from './config.js'
+import cache from './cache.js'
 
 const logo = chalk.red(
   '│  ___  __      __    ____ \n' +
@@ -29,6 +30,7 @@ const options = yargs(process.argv.slice(2))
   .alias('s', 'shell')
   .describe('s', 'Choose a default shell to execute the command against (it needs to exist in the system)')
   .choices('s', ['bash', 'powershell', 'cmd', 'zsh'])
+  .option('f', { alias: 'force', describe: 'Force to parse the text using OpenAI (bypass cache)', type: 'boolean' })
   .help(true)
   .argv
 
@@ -52,7 +54,11 @@ async function parseCommand (options) {
     shellName = options.s
   }
   try {
-    const res = await gpt3.translateTextToCommand(shellName, options._[0], 2)
+    let res = cache.searchCache(options._[0])
+    if (!res || options.f) {
+      res = await gpt3.translateTextToCommand(shellName, options._[0], 2)
+    }
+
     let commandChosen = res[0]
 
     if (res.length > 1) {
@@ -60,6 +66,8 @@ async function parseCommand (options) {
       commandChosen = res[prompt.value]
     }
 
+    // cache command executed
+    cache.addCacheEntry(options._[0], commandChosen)
     console.log(`$ ${commandChosen}`)
     const command = childProcess.spawn(shellName, [shell.getLaunchCommandForShell(shellName), commandChosen])
 

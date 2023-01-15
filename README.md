@@ -41,8 +41,8 @@ It will parse the prompt into a command and execute it.
 - [x] Allow using bash script instead of child_process to process call (allow for loop and other interesting command for example).
 - [x] Continuously redirect output and input to and from the process.
 - [x] Allow user to choose which solution if multiple commands can be use.
-- [ ] Optimize for usage with git. (fine tune)
-- [ ] Keep an history of commands to allow caching certain commands to reexecute the same way.
+- [x] Keep an history of commands to allow caching certain commands to reexecute the same way.
+- [] Find some logic to discard cache based on time and number of time it's red.
 - [ ] Add testing solution for unit and e2e to make sure everything is right on track.
 - [ ] Make a shell (or a zsh plugin) to support handling wrongly entered command.
 

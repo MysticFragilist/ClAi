@@ -8,7 +8,8 @@
     "clai": "./bin/index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "version": "auto-changelog -p && git add CHANGELOG.md"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,11 @@
     "AI",
     "GPT-3",
     "CLI",
-    "tool"
+    "tool",
+    "command-line",
+    "linux",
+    "windows",
+    "macos"
   ],
   "author": "Samuel Montambault <samuel.montambault.1@ens.etsmtl.ca>",
   "license": "MIT",
@@ -35,6 +40,7 @@
     "yargs": "^17.6.2"
   },
   "devDependencies": {
+    "auto-changelog": "^2.4.0",
     "eslint": "^8.31.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",

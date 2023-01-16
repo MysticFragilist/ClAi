@@ -1,12 +1,14 @@
 <p align="center">
   <img src="https://github.com/MysticFragilist/ClAi/blob/master/logo.png" width="200" height="200" align="middle" />
 </p>
-
-[![Downloads](https://img.shields.io/npm/dt/@mysticfragilist/clai)](https://img.shields.io/npm/dt/@mysticfragilist/clai)
-
+<p align="center">
+  <a href="https://www.npmjs.com/package/@mysticfragilist/clai"><img src="https://img.shields.io/npm/dt/@mysticfragilist/clai" alt="npm version" height="18"></a>
+  <a href="https://www.npmjs.com/package/@mysticfragilist/clai"><img src="https://badge.fury.io/js/@mysticfragilist%2Fclai.svg" alt="npm version" height="18"></a>
+  <a href="https://eslint.org"><img src="https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white" alt="npm version" height="18"></a>
+</p>
 
 # ClAi :rocket:
-A CLI tool to process input command into shell script and execute it. Every prompt is translated to a command using GPT-3 and executed. 
+A CLI tool to process input command into shell script and execute it. Every prompt is translated to a command using GPT-3 and executed.
 
 ## Installation
 Run these commands to get started:
@@ -52,7 +54,7 @@ It will parse the prompt into a command and execute it.
 - [x] Continuously redirect output and input to and from the process.
 - [x] Allow user to choose which solution if multiple commands can be use.
 - [x] Keep an history of commands to allow caching certain commands to reexecute the same way.
-- [] Find some logic to discard cache based on time and number of time it's red.
+- [ ] Find some logic to discard cache based on timestamp and number of time it's read.
 - [ ] Add testing solution for unit and e2e to make sure everything is right on track.
 - [ ] Make a shell (or a zsh plugin) to support handling wrongly entered command.
 
